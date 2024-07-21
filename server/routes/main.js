@@ -123,7 +123,9 @@ router.post('/search', async(req, res) => {
         // Render Search
         res.render("search",{
             data,
-            locals
+            locals,
+            currentRoute:'/'
+
         });
     }catch(error){
         console.log(error);
@@ -149,7 +151,10 @@ router.get('/about', (req, res) => {
 */
 
 router.get('/contact', (req, res) => {
-    res.render('contact');
+    res.render('contact',{
+        currentRoute:'/contact'
+
+    });
 });
 // Export router
 module.exports = router;
