@@ -19,7 +19,7 @@ const session = require('express-session');
 
 
 const app = express();
-const PORT = 5000 || process.env.PORT;
+const PORT = 8080 || process.env.PORT;
 
 // //Connect DB
 connectDB();
