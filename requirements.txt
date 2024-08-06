@@ -21,7 +21,7 @@ npm install font-awesome --save
 --------------
 Usefull Links
 --------------
-How to use fontawesome with NodeJs
+How to use fontawesome with NodeJs-
 
 https://www.geeksforgeeks.org/how-to-use-font-awesome-icons-from-node-js-modules/
 
