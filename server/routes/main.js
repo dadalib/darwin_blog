@@ -150,6 +150,15 @@ router.get('/about', (req, res) => {
 
 /**
  * GET /
+ * References
+*/
+router.get('/references', (req, res) => {
+    res.render('references',{
+        currentRoute:'/references'
+    });
+});
+/**
+ * GET /
  * Contact
 */
 
