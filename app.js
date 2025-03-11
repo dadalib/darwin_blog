@@ -1,6 +1,7 @@
 // Calling libraries
 require('dotenv').config();
 const express =  require('express');
+const cors = require('cors');
 const expressLayout = require('express-ejs-layouts');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
@@ -29,6 +30,14 @@ app.use(express.urlencoded({ extended:true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
+// Allow request for any API
+app.use(cors());
+// prevent nasty data with siple algorithms
+const middle = express.urlencoded({
+    extended : false,
+    limit : 10000,// KB limit
+    parameterLimit: 2,//limit more than 2 inputs
+ })
 
 // Save Session
 app.use(session({
@@ -47,6 +56,14 @@ app.use(session({
 
 // Public folder containing CSS, Js ...
 app.use(express.static('public'));
+// Allow requeqt from any IP
+app.post('/upload',middle ,function(req,res){
+    //Handle from upload
+    console.log(req.body);
+    // { firstName: 'Barry', lastName: 'Manilow' }
+
+
+})
 
 // Template Engine fou ejs express layout
 app.use(expressLayout);
