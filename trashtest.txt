@@ -1,0 +1,40 @@
+<scriptt>
+    <body>
+        <!-- <form class="contact-form" action="application/x-form-utlencode" method="POST"> -->
+        <!-- <form class="contact-form" action="http://localhost:8080/upload" enctype="application/x-www-form-urlencoded" method="POST"> -->
+        <form class="contact-form" action="/contact" enctype="application/x-www-form-urlencoded" method="POST">
+            <h1>Contact Me</h1>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="nei@gmail.com" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Type your message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit" value ="Add">Submit</button>
+            </div>
+        </form>
+    </body>
+</scriptt>
+
+<script>
+    const form =document.querySelector('form');
+    form.addEventListener('submit',(e) =>{
+        e.preventDefault();// PRevent HTML submisison
+        // 'application/x-www-form-urlencoded' or 'multipart/form-data'
+        const fd = new FormData(form);// pass to form data constructor to fd fom data payload
+
+        const urlEncoded = new URLSearchParams(fd).toString();//covert to a url String
+
+        fetch('http:localhost:8080/upload',{
+            method:"POST",
+            body: urlEncoded,//just 'fd' for mmultipart/form-data
+            headers : {
+                'Content-type' : 'application/x-www-form-urlencoded',
+            }
+        })
+
+    })
+</script>

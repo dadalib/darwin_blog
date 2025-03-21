@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const Contact = require('../models/Contact');
 const User = require('../models/User');
 // Encrypt PWD in DB
 const bcrypt = require('bcrypt');
@@ -110,6 +111,8 @@ router.get('/dashboard', authMiddleware,async(req, res) => {
 
 
 });
+
+
     
 
 /**
@@ -167,8 +170,37 @@ router.post('/add-post', authMiddleware,async(req, res) => {
 });
 
 /**
+ * Post /
+ * Contact - Create New Post
+*/
+
+router.post('/contact', authMiddleware,async(req, res) => {
+    try{
+
+
+        try{
+            const newContactPost = new Contact({
+                name: req.body.name,
+                email: req.body.email,
+                body: req.body.body
+            });
+            await Contact.create(newContactPost),
+            res.redirect('/');
+
+        }catch(error){
+            console.log(error);
+        }
+
+        res.redirect('/');
+
+    }catch(error){
+        console.log(error);
+    }
+});
+
+/**
  * GET
- * Admin - Create New Post
+ * Admin - Edit Post
 */
 
 router.get('/edit-post/:id', authMiddleware, async(req, res) => {

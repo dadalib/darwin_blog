@@ -56,8 +56,8 @@ app.use(session({
 
 // Public folder containing CSS, Js ...
 app.use(express.static('public'));
-// Allow requeqt from any IP
-app.post('/upload',middle ,function(req,res){
+// Allow requeqt from any IP // Reboot here
+app.post('/upload',middle,function(req,res){
     //Handle from upload
     console.log(req.body);
     // { firstName: 'Barry', lastName: 'Manilow' }
